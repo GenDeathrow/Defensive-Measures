@@ -2,6 +2,12 @@ package com.gendeathrow.dm.core;
 
 import java.io.IOException;
 
+import com.gendeathrow.dm.core.init.ModBlocks;
+import com.gendeathrow.dm.core.init.ModItems;
+import com.gendeathrow.dm.core.init.ModRecipes;
+import com.gendeathrow.dm.core.init.ModReference;
+import com.gendeathrow.dm.core.proxies.CommonProxy;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,69 +19,50 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.network.FMLEventChannel;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-import com.gendeathrow.dm.core.proxies.CommonProxy;
-
-@Mod(modid = DefensiveMeasures.MODID, name=DefensiveMeasures.NAME, version = DefensiveMeasures.VERSION)
+@Mod(modid = ModReference.MOD_ID, name = ModReference.NAME, version = ModReference.VERSION)
 public class DefensiveMeasures {
 
-		public static final String MODID = "defensive";
-	    public static final String VERSION = "0.0.1";
-	    public static final String NAME = "Defensive Measures";
-	    public static final String PROXY = "com.gendeathrow.dm.core.proxies";
-	    public static final String CHANNELNAME = "vadgendm";
-	    
-	    @Instance(MODID)
-		public static DefensiveMeasures instance;
-	    
-		@SidedProxy(clientSide = PROXY + ".ClientProxy", serverSide = PROXY + ".CommonProxy")
-		public static CommonProxy proxy;
+	@Instance(ModReference.MOD_ID)
+	public static DefensiveMeasures INSTANCE;
 
-		public static SimpleNetworkWrapper network;
-		
-	    public static org.apache.logging.log4j.Logger logger;
-	    
-	    public static CreativeTabs defensiveTabs = new CreativeTabs(MODID)
-	    {
-	        @Override public Item getTabIconItem() 
-	        {
-	            return Items.BANNER;
-	        }
-	 
-	    };
-	    
-	    @EventHandler
-	    public void preInit(FMLPreInitializationEvent event)
-	    {
-	    	logger = event.getModLog();
+	@SidedProxy(clientSide = ModReference.PROXY_PATH + ".ClientProxy", serverSide = ModReference.PROXY_PATH + ".CommonProxy")
+	public static CommonProxy PROXY;
 
-	    	proxy.preInit(event);
-	    }
-		
-	    @EventHandler
-	    public void init(FMLInitializationEvent event) throws IOException
-	    {
-	    	proxy.init(event);
-	    	
-	    	// waila integration
-//	        FMLInterModComms.sendMessage("Waila", "register", "com.gendeathrow.hatchery.core.waila.HatcheryTileProvider.load");
-	    	
-	    	proxy.registerEventHandlers();
-	    	proxy.initRenderers();
-	     }
-	    
-	    @EventHandler
-	    public void postInit(FMLPostInitializationEvent event)
-	    {
-	    	proxy.postInit(event);
-	    	
-	    }
-	    
-		@EventHandler
-		public void serverStart(FMLServerStartingEvent event)
-		{
+	public static SimpleNetworkWrapper NETWORK_WRAPPER;
 
+	public static CreativeTabs TAB = new CreativeTabs(ModReference.MOD_ID) {
+		@Override
+		public Item getTabIconItem() {
+			return Items.BANNER;
 		}
+
+	};
+
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		ModItems.init();
+		ModBlocks.init();
+		PROXY.registerTileEntities();
+		PROXY.registerItemAndBlockRenderers();
+		ModRecipes.addRecipes();
+		NETWORK_WRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(ModReference.CHANNEL_NAME);
 	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event) throws IOException {
+
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		PROXY.postInit();
+	}
+
+	@EventHandler
+	public void serverStart(FMLServerStartingEvent event) {
+
+	}
+}

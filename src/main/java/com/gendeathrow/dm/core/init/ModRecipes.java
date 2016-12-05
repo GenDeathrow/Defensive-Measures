@@ -1,15 +1,12 @@
 package com.gendeathrow.dm.core.init;
 
-public class ModRecipes 
-{
+public class ModRecipes {
 
-	public static void RegisterOreDic()
-	{
+	public static void registerOreDic() {
 
 	}
-	
-	public static void RegisterRecipes()
-	{
-		
+
+	public static void addRecipes() {
+
 	}
 }

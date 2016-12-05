@@ -1,56 +1,24 @@
 package com.gendeathrow.dm.core.proxies;
 
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 
-public class CommonProxy
-{
-	public boolean isClient()
-	{
-		return false;
-	}
-	
-	public boolean isOpenToLAN()
-	{
-		return false;
-	}
-	
-	public void registerTickHandlers() 
-	{
-	
-	}
-	
-	
-	public void initRenderers()
-	{
-		
-	}
-	
-	public void registerEventHandlers()
-	{
+public class CommonProxy {
+
+	public void registerItemAndBlockRenderers() {
 
 	}
-	
-	public void preInit(FMLPreInitializationEvent event)
-	{
-//		ModBlocks.preInit(event);
-//		ModItems.RegisterItems();
-//		ModFluids.registerFluids();		
-	}
-	
-	public void init(FMLInitializationEvent event)
-	{
 
-
+	public void setCustomStateMap(Block block, StateMap stateMap) {
 
 	}
-	
-	public void postInit(FMLPostInitializationEvent event)
-	{
-//		ModRecipes.RegisterOreDic();
-//		ModRecipes.RegisterRecipes();
+
+	public void registerTileEntities() {
+
 	}
-	
+
+	public void postInit() {
+
+	}
 
 }
