@@ -1,13 +1,12 @@
-package com.gendeathrow.dm.core;
+package defensive_measures;
 
 import java.io.IOException;
 
-import com.gendeathrow.dm.core.init.ModBlocks;
-import com.gendeathrow.dm.core.init.ModItems;
-import com.gendeathrow.dm.core.init.ModRecipes;
-import com.gendeathrow.dm.core.init.ModReference;
-import com.gendeathrow.dm.core.proxies.CommonProxy;
-
+import defensive_measures.init.ModBlocks;
+import defensive_measures.init.ModItems;
+import defensive_measures.init.ModRecipes;
+import defensive_measures.init.ModReference;
+import defensive_measures.proxies.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,6 +20,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+
+
 
 @Mod(modid = ModReference.MOD_ID, name = ModReference.NAME, version = ModReference.VERSION)
 public class DefensiveMeasures {

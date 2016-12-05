@@ -1,4 +1,4 @@
-package com.gendeathrow.dm.core.init;
+package defensive_measures.init;
 
 public class ModRecipes {
 

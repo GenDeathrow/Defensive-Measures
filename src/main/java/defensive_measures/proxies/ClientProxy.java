@@ -1,8 +1,7 @@
-package com.gendeathrow.dm.core.proxies;
+package defensive_measures.proxies;
 
-import com.gendeathrow.dm.core.init.ModBlocks;
-import com.gendeathrow.dm.core.init.ModItems;
-
+import defensive_measures.init.ModBlocks;
+import defensive_measures.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraftforge.client.model.ModelLoader;

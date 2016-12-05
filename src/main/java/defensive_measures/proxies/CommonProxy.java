@@ -1,4 +1,4 @@
-package com.gendeathrow.dm.core.proxies;
+package defensive_measures.proxies;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.statemap.StateMap;
