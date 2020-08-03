@@ -5,7 +5,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import defensive_measures.DefensiveMeasures;
+import defensive_measures.common.blocks.TurretBase;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -19,15 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
 
-	
-	
-	
-	
-	
-	
-	
-	
-
+	public static RegistryObject<Block> turret_tier_1 = register("turret_tier_1", () -> new TurretBase(Block.Properties.create(Material.IRON), 1), DefensiveMeasures.TAB);
 	
 	
 	
